@@ -1,6 +1,7 @@
 -- Group project - Online store database --
 -- CSCI 466 --
 -- Abraham Gonzalez z2012791 --
+-- Om Patel z2043569 --
 
 -- Creating tables --
 
