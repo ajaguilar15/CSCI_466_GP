@@ -69,4 +69,4 @@ CREATE TABLE SHIPMENT
 );
 
 -- Inserting data into tables --
-
+INSERT INTO USERS VALUES ('01','John','Doe','JD101@gmail.com','TestPassword','105 Plaza Street','754-845-925','4852745810245698'  )
