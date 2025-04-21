@@ -68,27 +68,13 @@ CREATE TABLE SHIPMENT
 -- INSERT SAMPLE DATA --
 
 -- 1. USERS
-INSERT INTO USERS VALUES
-('U1', 'Alice', 'Smith', 'alice@example.com', 'pass123', '123 Main St', '555-1234', 'token1'),
-('U2', 'Bob', 'Jones', 'bob@example.com', 'pass456', '456 Elm St', '555-5678', 'token2'),
-('U3', 'Clara', 'Lee', 'clara@example.com', 'pass789', '789 Oak St', '555-9876', 'token3');
+
 
 -- 2. PRODUCT
-INSERT INTO PRODUCT VALUES
-('P1', 'Laptop', '15 inch display', 899.99, 12),
-('P2', 'Phone', '128GB storage', 499.49, 30),
-('P3', 'Monitor', '24 inch LED', 159.99, 20),
-('P4', 'Keyboard', 'Mechanical', 79.99, 45),
-('P5', 'Mouse', 'Wireless', 39.99, 50);
+
 
 -- 3. ORDERS
-INSERT INTO ORDERS VALUES
-('O1', 'U1', '105.49', 'PROCESSING'),
-('O2', 'U2', '1468.23', 'COMPLETED'),
-('O3', 'U3', '24657.00', 'PENDING');
+
 
 -- 4. SHIPMENTS
-INSERT INTO SHIPMENT VALUES
-('S1', 'O1', '1Z999AA10123456784', 'SHIPPED'),
-('S2', 'O2', '999999999999', 'DELIVERED'),
-('S3', 'O3', '12344567824657215','PENDING');
+
