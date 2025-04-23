@@ -1,11 +1,5 @@
-<html>
-  <head>
-  <title>Products</title>
-  </head>
-  <body>
-  <h1>Products</h1>
-      
-"Store/Cart.php": """<?php
+
+    "Store/Cart.php": """<?php
 session_start();
 include 'DB.php';
 
@@ -36,5 +30,3 @@ while ($row = $stmt->fetch()) {
 }
 echo "<tr><td colspan='3'>Total</td><td>\${$total}</td></tr></table>";
 ?>"""
-  </body>
-</html>
