@@ -36,3 +36,5 @@ while ($row = $stmt->fetch()) {
 }
 echo "<tr><td colspan='3'>Total</td><td>\${$total}</td></tr></table>";
 ?>"""
+  </body>
+</html>
