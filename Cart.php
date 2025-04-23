@@ -1,4 +1,11 @@
-    "Store/Cart.php": """<?php
+<html>
+  <head>
+  <title>Products</title>
+  </head>
+  <body>
+  <h1>Products</h1>
+      
+"Store/Cart.php": """<?php
 session_start();
 include 'DB.php';
 
