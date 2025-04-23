@@ -1,5 +1,5 @@
 
-    "Store/Cart.php": """<?php
+    "Store/cart.php": """<?php
 session_start();
 include 'DB.php';
 
