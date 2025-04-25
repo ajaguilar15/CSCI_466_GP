@@ -3,8 +3,9 @@
     <h1>Welcome to our Best Buy Store</h1>
     <h2>Do you want to sign in or create your own account?</h2>
     <?php
-      $dsn = "mysql:host=courses;dbname=z2043569";
-      $pdo = new PDO($dsn, "z2043569", "2004Apr07");
+      $goto = "https://students.cs.niu.edu/~z2045088/products.php";
+      $dsn = "mysql:host=courses;dbname=z2045088";
+      $pdo = new PDO($dsn, "z2045088", "2005Jun23");
       if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $action = $_POST['action'];
         switch ($action) {
@@ -22,7 +23,7 @@
             }
             else {
               echo "<h2>Type in your Email and Password</h2>";
-              echo "<form method='POST' action=''>";
+              echo "<form method='POST' action='$goto'>";
               echo "<input type='hidden' name='action' value='signin'>";
               echo "<label for='email'>Email:</label><br>";
               echo "<input type='text' name='email' id='email' required><br><br>";
