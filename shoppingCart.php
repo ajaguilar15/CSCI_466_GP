@@ -23,9 +23,8 @@
         $name = $show[0];
         $fname = $name[0];
         $lname = $name[1];
-        //$fname = $name[FIRST_NAME];
-        //$lname = $name[LAST_NAME];
 
+        //head back to view products
         echo "<form method=POST action=https://students.cs.niu.edu/~z2045088/products.php>";
         echo "<input type=hidden name=email value=$_POST[email]>";
         echo "<input type=hidden name=pwd value=$_POST[pwd]>";
@@ -38,12 +37,15 @@
         $result = $pdo->query($sel);
         $show = $result->fetchALL(PDO::FETCH_ASSOC);
         $prodList=$show;
+
+
         //get the total for each product aas we display the cart
         $prodTot=0;
         $Total=0;
         echo "<h1>$fname $lname's Cart</h1>";
 
         //update the quantity amount
+        //basically add or remove quantity of items
         if($_POST['changeQTY'] != NULL){
             foreach($prodList as $r){
                 if($r['PRODUCTID'] == $_POST['pchange']){
@@ -75,6 +77,35 @@
             $show = $result->fetchALL(PDO::FETCH_ASSOC);
             $prodList=$show;
         }
+
+        //makes sure there's a max amount of a product otherwise
+        //the user would be paying for nonexistant products
+        $psel = "SELECT PRODUCT.PRODUCTID, STOCKQTY FROM PRODUCT JOIN SHOPPING_CART WHERE PRODUCT.PRODUCTID=SHOPPING_CART.PRODUCTID AND USERID='$_POST[userID]';";
+        $result = $pdo->query($psel);
+        $stock = $result->fetchALL(PDO::FETCH_ASSOC);
+
+
+        //checks if user amount is greater than stock amount
+        $incr=0;
+        foreach($prodList as $r){
+            $stockC = $stock[$incr];
+
+            if($r['USERQTY'] > $stockC['STOCKQTY']){
+                $upsel = "UPDATE SHOPPING_CART SET USERQTY='$stockC[STOCKQTY]' WHERE USERID='$_POST[userID]' AND PRODUCTID='$r[PRODUCTID]';";
+                $result = $pdo->query($upsel);
+                $result->fetchALL(PDO::FETCH_ASSOC);
+            }
+            $incr = $incr + 1;
+        }
+
+
+        //update product list after every change
+        //in order to properly display current cart
+        $sel = "SELECT SHOPPING_CART.PRODUCTID, PNAME, PRICE, USERQTY FROM PRODUCT JOIN SHOPPING_CART WHERE PRODUCT.PRODUCTID=SHOPPING_CART.PRODUCTID AND USERID='$_POST[userID]';";
+        $result = $pdo->query($sel);
+        $prodList = $result->fetchALL(PDO::FETCH_ASSOC);
+
+
 
 
         //table displaying cart
