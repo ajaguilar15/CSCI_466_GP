@@ -36,7 +36,6 @@
           case 'create_account':
             echo "<h2>Create Your Account</h2>";
             echo "<form method='POST' action='home.php'>";
-            echo "<label for='cr_uid'>UserID:</label><br>";
             echo "<input type='text' name='cr_uid' id='cr_uid'><br><br>";
             echo "<label for='first'>First Name:</label><br>";
             echo "<input type='text' name='first' id='first'><br><br>";
