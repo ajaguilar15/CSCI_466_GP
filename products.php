@@ -87,7 +87,7 @@
 
     //add product if not on cart
     if(empty($prQTY[0])){
-        $sel = 'INSERT INTO SHOPPING_CART VALUES(:ui, :pi, :qty);';
+        $sel = 'INSERT INTO SHOPPING_CART VALUES(:ui, :pi, :qty, NULL);';
         $result = $pdo->prepare($sel);
         $succ = $result->execute(array(':ui' => $usID[0], ':pi'=> $_POST['ProdName'], ':qty' => $_POST['USRQTY']));
 
