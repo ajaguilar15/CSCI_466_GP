@@ -9,7 +9,7 @@
 -- Phone numbers are limited to the US (foreign numbers can be longer or shorter)
 CREATE TABLE USERS
 (
-    USERID CHAR(2) NOT NULL PRIMARY KEY,
+    USERID CHAR(10) NOT NULL PRIMARY KEY,
     FIRST_NAME VARCHAR(20) NOT NULL,
     LAST_NAME VARCHAR(20) NOT NULL,
     EMAIL VARCHAR(30) UNIQUE,
