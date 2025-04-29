@@ -78,11 +78,11 @@ INSERT INTO USERS (USERID, FIRST_NAME, LAST_NAME, EMAIL, PASSWORD, ADDRESS, PHON
 
 -- PRODUCT
 INSERT INTO PRODUCT (PRODUCTID, PNAME, DESCRIPTION, PRICE, STOCKQTY) VALUES
-('P1', 'Laptop', '15 inch display', 899.99, 12),
-('P2', 'Phone', '128GB storage', 499.49, 30),
-('P3', 'Monitor', '24 inch LED', 159.99, 20),
-('P4', 'Keyboard', 'Mechanical', 79.99, 45),
-('P5', 'Mouse', 'Wireless', 39.99, 50);
+('P1', 'Laptop', '15 Inch display', 899.99, 12),
+('P2', 'Phone', '128GB Storage', 499.49, 30),
+('P3', 'Monitor', '49 Inch LED', 159.99, 20),
+('P4', 'Keyboard', 'Vintage Mechanical', 79.99, 45),
+('P5', 'Mouse', 'Wireless RGB', 39.99, 50);
 
 -- ORDERS (with ORDERDATE)
 INSERT INTO ORDERS (ORDERID, USERID, TOTAL, OSTATUS, ORDERDATE) VALUES
