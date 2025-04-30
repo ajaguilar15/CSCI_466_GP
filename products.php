@@ -80,21 +80,27 @@
     echo "</form>";
 
     //get the product that user wants to add
-    $sel = "SELECT USERQTY FROM SHOPPING_CART WHERE USERID='$usID[0]' AND PRODUCTID='$_POST[ProdName]';";
+    $sel = "SELECT USERQTY FROM SHOPPING_CART WHERE USERID='$usID[0]' AND PRODUCTID='$_POST[ProdName]' AND ORDERCHECK='FALSE';";
     $result = $pdo->query($sel);
     $show = $result->fetchALL();
     $prQTY = $show[0];
 
+    //make a new primary key that includes random values to make sure its
+    //truly unique, maybe the ordered idea can help as well
+    $valids = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+
+
+    $ran = substr(str_shuffle($valids),0,5);
     //add product if not on cart
     if(empty($prQTY[0])){
-        $sel = 'INSERT INTO SHOPPING_CART VALUES(:ui, :pi, :qty, NULL);';
+        $sel = 'INSERT INTO SHOPPING_CART VALUES(:ui, :pi, :ri, :o, NULL, :qty);';
         $result = $pdo->prepare($sel);
-        $succ = $result->execute(array(':ui' => $usID[0], ':pi'=> $_POST['ProdName'], ':qty' => $_POST['USRQTY']));
+        $succ = $result->execute(array(':ui' => $usID[0], ':pi'=> $_POST['ProdName'], ':ri' => $ran, ':o' => 'FALSE', ':qty' => $_POST['USRQTY']));
 
     //add user qty to cart if item is already stored in user's cart
     }else{
         $sum = $prQTY[0] + $_POST['USRQTY'];
-        $sel = "UPDATE SHOPPING_CART SET USERQTY='$sum' WHERE USERID='$usID[0]' AND PRODUCTID='$_POST[ProdName]';";
+        $sel = "UPDATE SHOPPING_CART SET USERQTY='$sum' WHERE USERID='$usID[0]' AND PRODUCTID='$_POST[ProdName]' AND ORDERCHECK='FALSE';";
         $result = $pdo->prepare($sel);
         $succ = $result->execute();
     }

@@ -20,18 +20,18 @@
             $show = $result->fetchALL();
             $td = $show[0];
             $thedate=$td[0];
-            echo "yup";
+            //echo "yup";
             $valids = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
             $ran = substr(str_shuffle($valids),0,2);
             echo "$thedate";
             $oi = $_POST['ORID'];
             echo "<br> $_POST[ORID]";
-            echo "<br> $ran";
-            echo "<br> $_POST[userID]";
+            //echo "<br> $ran";
+            //echo "<br> $_POST[userID]";
             echo "<br> $_POST[total]";
             $proc = "PROCESSING";
-            echo "<br> $proc";
-            $shopsel = "UPDATE SHOPPING_CART SET CARTDATE='$thedate' WHERE USERID='$_POST[userID]' AND CARTDATE IS NULL;";
+            //echo "<br> $proc";
+            $shopsel = "UPDATE SHOPPING_CART SET ORDERCHECK='TRUE', ORDERID='$ran' WHERE USERID='$_POST[userID]' AND ORDERCHECK='FALSE';";
 
             $ordersel = 'INSERT INTO ORDERS VALUES(:date, :order, :user, :tot, :proc);';
             $result = $pdo->prepare($ordersel);

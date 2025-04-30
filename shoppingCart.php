@@ -33,7 +33,7 @@
         echo "</form>";
 
         //show user's shopping cart
-    $sel = "SELECT SHOPPING_CART.PRODUCTID, PNAME, PRICE, USERQTY FROM PRODUCT JOIN SHOPPING_CART WHERE PRODUCT.PRODUCTID=SHOPPING_CART.PRODUCTID AND USERID='$_POST[userID]' AND CARTDATE IS NULL;";
+    $sel = "SELECT SHOPPING_CART.PRODUCTID, PNAME, PRICE, USERQTY FROM PRODUCT JOIN SHOPPING_CART WHERE PRODUCT.PRODUCTID=SHOPPING_CART.PRODUCTID AND USERID='$_POST[userID]' AND ORDERCHECK='FALSE';";
         $result = $pdo->query($sel);
         $show = $result->fetchALL(PDO::FETCH_ASSOC);
         $prodList=$show;
@@ -44,6 +44,7 @@
         $Total=0;
         echo "<h1>$fname $lname's Cart</h1>";
 
+        
         //update the quantity amount
         //basically add or remove quantity of items
         if($_POST['changeQTY'] != NULL){
@@ -63,16 +64,16 @@
 
             //if less than zero then remove item from list
             if($changeQTY < 1){
-                $sel = "DELETE FROM SHOPPING_CART WHERE USERID='$_POST[userID]' AND PRODUCTID='$_POST[pchange]' AND CARTDATE IS NULL;";
+                $sel = "DELETE FROM SHOPPING_CART WHERE USERID='$_POST[userID]' AND PRODUCTID='$_POST[pchange]' AND ORDERCHECK='FALSE';";
             }
             else{
-                $sel = "UPDATE SHOPPING_CART SET USERQTY='$changeQTY' WHERE USERID='$_POST[userID]' AND PRODUCTID='$_POST[pchange]' AND CARTDATE IS NULL;";
+                $sel = "UPDATE SHOPPING_CART SET USERQTY='$changeQTY' WHERE USERID='$_POST[userID]' AND PRODUCTID='$_POST[pchange]' AND ORDERCHECK='FALSE';";
             }
             $result = $pdo->prepare($sel);
             $succ = $result->execute();
 
             //update prodList
-            $sel = "SELECT SHOPPING_CART.PRODUCTID, PNAME, PRICE, USERQTY FROM PRODUCT JOIN SHOPPING_CART WHERE PRODUCT.PRODUCTID=SHOPPING_CART.PRODUCTID AND USERID='$_POST[userID]' AND CARTDATE IS NULL;";
+            $sel = "SELECT SHOPPING_CART.PRODUCTID, PNAME, PRICE, USERQTY FROM PRODUCT JOIN SHOPPING_CART WHERE PRODUCT.PRODUCTID=SHOPPING_CART.PRODUCTID AND USERID='$_POST[userID]' AND ORDERCHECK='FALSE';";
             $result = $pdo->query($sel);
             $show = $result->fetchALL(PDO::FETCH_ASSOC);
             $prodList=$show;
@@ -80,7 +81,7 @@
 
         //makes sure there's a max amount of a product otherwise
         //the user would be paying for nonexistant products
-        $psel = "SELECT PRODUCT.PRODUCTID, STOCKQTY FROM PRODUCT JOIN SHOPPING_CART WHERE PRODUCT.PRODUCTID=SHOPPING_CART.PRODUCTID AND USERID='$_POST[userID]' AND CARTDATE IS NULL;";
+        $psel = "SELECT PRODUCT.PRODUCTID, STOCKQTY FROM PRODUCT JOIN SHOPPING_CART WHERE PRODUCT.PRODUCTID=SHOPPING_CART.PRODUCTID AND USERID='$_POST[userID]' AND ORDERCHECK='FALSE';";
         $result = $pdo->query($psel);
         $stock = $result->fetchALL(PDO::FETCH_ASSOC);
 
@@ -91,17 +92,16 @@
             $stockC = $stock[$incr];
 
             if($r['USERQTY'] > $stockC['STOCKQTY']){
-                $upsel = "UPDATE SHOPPING_CART SET USERQTY='$stockC[STOCKQTY]' WHERE USERID='$_POST[userID]' AND PRODUCTID='$r[PRODUCTID]' AND CARTDATE IS NULL;";
+                $upsel = "UPDATE SHOPPING_CART SET USERQTY='$stockC[STOCKQTY]' WHERE USERID='$_POST[userID]' AND PRODUCTID='$r[PRODUCTID]' AND ORDERCHECK='FALSE';";
                 $result = $pdo->query($upsel);
                 $result->fetchALL(PDO::FETCH_ASSOC);
             }
             $incr = $incr + 1;
         }
 
-
         //update product list after every change
         //in order to properly display current cart
-        $sel = "SELECT SHOPPING_CART.PRODUCTID, PNAME, PRICE, USERQTY FROM PRODUCT JOIN SHOPPING_CART WHERE PRODUCT.PRODUCTID=SHOPPING_CART.PRODUCTID AND USERID='$_POST[userID]' AND CARTDATE IS NULL;";
+        $sel = "SELECT SHOPPING_CART.PRODUCTID, PNAME, PRICE, USERQTY FROM PRODUCT JOIN SHOPPING_CART WHERE PRODUCT.PRODUCTID=SHOPPING_CART.PRODUCTID AND USERID='$_POST[userID]' AND ORDERCHECK='FALSE';";
         $result = $pdo->query($sel);
         $prodList = $result->fetchALL(PDO::FETCH_ASSOC);
 
@@ -179,7 +179,10 @@
             echo "<br>";
             echo "<form method=POST action=https://students.cs.niu.edu/~z2045088/orders.php>";
             echo "Your total is $$fTot <br>";
-            echo "Input billing info <br>";
+            echo "Input billing info: <br><br>";
+            echo "Address: <br>";
+            echo "<input type=text name=address> <br>";
+            echo "Card number:<br>";
             echo "<input type=number name=cardNum>";
             echo "<input type=submit name=Order value='Place Order'>";
             echo "<input type=hidden name=total value=$_POST[total]>";
