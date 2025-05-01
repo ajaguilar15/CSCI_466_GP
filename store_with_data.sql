@@ -77,7 +77,9 @@ CREATE TABLE SHIPMENT
 INSERT INTO USERS (USERID, FIRST_NAME, LAST_NAME, EMAIL, PASSWORD, ADDRESS, PHONENUM, BILLINFO) VALUES
 ('U1', 'Alice', 'Smith', 'alice@example.com', 'pass123', '123 Main St', '555-1234', 'token1'),
 ('U2', 'Bob', 'Jones', 'bob@example.com', 'pass456', '456 Elm St', '555-5678', 'token2'),
-('U3', 'Clara', 'Lee', 'clara@example.com', 'pass789', '789 Oak St', '555-9876', 'token3');
+('U3', 'Clara', 'Lee', 'clara@example.com', 'pass789', '789 Oak St', '555-9876', 'token3'),
+('U4', 'Michael', 'Mckeen', 'mckeen@example.com', 'pass135', '142 Smith St', '555-7896', 'token4'),
+('U5', 'Maria', 'Hill', 'maria@example.com', 'pass246', '253 Clover St', '555-2983', 'token5');
 
 -- PRODUCT
 INSERT INTO PRODUCT (PRODUCTID, PNAME, DESCRIPTION, PRICE, STOCKQTY) VALUES
@@ -91,7 +93,9 @@ INSERT INTO PRODUCT (PRODUCTID, PNAME, DESCRIPTION, PRICE, STOCKQTY) VALUES
 INSERT INTO ORDERS (ORDERID, USERID, TOTAL, OSTATUS, ORDERDATE) VALUES
 ('O1', 'U1', 1219.97, 'PROCESSING', '2025-04-10'),
 ('O2', 'U2', 499.49, 'DELIVERED', '2025-04-09'),
-('O3', 'U3', 199.96, 'PENDING', '2025-04-11');
+('O3', 'U3', 199.96, 'PENDING', '2025-04-11'),
+('O4', 'U4', 79.98, 'PENDING', '2025-04-30'),
+('O5', 'U5', 659.48, 'DELIVERED', '2025-05-1');
 
 -- SHIPMENT (with SHIPDATE)
 INSERT INTO SHIPMENT (SHIPID, ORDERID, TRACKNUM, SSTATUS, SHIPDATE) VALUES
