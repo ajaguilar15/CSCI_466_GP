@@ -87,7 +87,22 @@ INSERT INTO PRODUCT (PRODUCTID, PNAME, DESCRIPTION, PRICE, STOCKQTY) VALUES
 ('P2', 'Phone', '128GB Storage', 499.49, 30),
 ('P3', 'Monitor', '49 Inch LED', 159.99, 20),
 ('P4', 'Keyboard', 'Vintage Mechanical', 79.99, 45),
-('P5', 'Mouse', 'Wireless RGB', 39.99, 50);
+('P5', 'Mouse', 'Wireless RGB', 39.99, 50),
+('P6', 'Tablet', '10 Inch Display', 349.99, 25),
+('P7', 'Stylus Pen', 'Precision Tip Pen', 19.99, 24),
+('P8', 'Smartwatch', 'Fitness Tracker', 69.99, 40),
+('P9', 'Headphones', 'Noise Cancelling', 99.99, 35),
+('PX', 'Bluetooth Earbuds', 'Sport Earbuds', 35.99, 55),
+('X1', 'Speaker', 'Portable Audio', 99.99, 35),
+('X2', 'Camera', 'Vlogging Camera', 89.99, 30),
+('X3', 'Printer', 'Color Printer', 129.49, 15),
+('X4', 'Flash Drive', '512GB Storage', 45.99, 55),
+('X5', 'Webcam', '1080p HD Webcam', 45.99, 55),
+('X6', 'TI-84 calculator', 'Graphing Calculator', 66.99, 45),
+('X7', 'External HDD', '2TB Storage', 356.99, 10),
+('X8', 'Power Bank', 'Fast Charge Power', 57.49, 20),
+('X9', 'Microphone', 'Wireless Audio', 28.99, 50),
+('XX', 'Drone', 'HD Camera Drone', 178.99, 12);
 
 -- ORDERS (with ORDERDATE)
 INSERT INTO ORDERS (ORDERID, USERID, TOTAL, OSTATUS, ORDERDATE) VALUES
