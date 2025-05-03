@@ -1,5 +1,8 @@
--- Group project - Online store database --
+-- store.sql --
+
 -- CSCI 466 --
+-- Section 1 --
+
 -- Abraham Gonzalez z2012791 --
 -- Om Patel z2043569 --
 -- Anthony Aguilar-Herrera z1878942 --
