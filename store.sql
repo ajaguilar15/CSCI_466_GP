@@ -7,6 +7,7 @@
 -- Om Patel z2043569 --
 -- Anthony Aguilar-Herrera z1878942 --
 -- Jason Rosas z2045088 --
+-- Joushua Henne z2018602 --
 
 -- Creating tables --
 
