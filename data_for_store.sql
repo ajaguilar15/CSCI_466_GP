@@ -1,4 +1,12 @@
+-- data_for_store.sql --
 
+-- CSCI 466 --
+-- Section 1 --
+
+-- Abraham Gonzalez z2012791 --
+-- Om Patel z2043569 --
+-- Anthony Aguilar-Herrera z1878942 --
+-- Jason Rosas z2045088 --
 
 -- USERS
 INSERT INTO USERS (USERID, FIRST_NAME, LAST_NAME, EMAIL, PASSWORD, ADDRESS, PHONENUM, BILLINFO) VALUES
